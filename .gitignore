@@ -26,6 +26,14 @@
 #*.obj
 #
 
+# QUESTO L'HO AGGIUNTO IO
+# C++ compiler-generated binaries (safe to delete)
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.pdi
+
 # Delphi compiler-generated binaries (safe to delete)
 *.exe
 *.dll
