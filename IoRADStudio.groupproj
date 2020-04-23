@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DDBD2583-10F3-4731-BA57-8AE6A4C9BA25}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MDADelphi\MDADelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MDADelphi">
+        <MSBuild Projects="MDADelphi\MDADelphi.dproj"/>
+    </Target>
+    <Target Name="MDADelphi:Clean">
+        <MSBuild Projects="MDADelphi\MDADelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDADelphi:Make">
+        <MSBuild Projects="MDADelphi\MDADelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MDADelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MDADelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MDADelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
