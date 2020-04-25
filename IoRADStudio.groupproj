@@ -6,6 +6,9 @@
         <Projects Include="MDADelphi\MDADelphi.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="MDACpp\MDACpp.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="MDADelphi:Make">
         <MSBuild Projects="MDADelphi\MDADelphi.dproj" Targets="Make"/>
     </Target>
+    <Target Name="MDACpp">
+        <MSBuild Projects="MDACpp\MDACpp.cbproj"/>
+    </Target>
+    <Target Name="MDACpp:Clean">
+        <MSBuild Projects="MDACpp\MDACpp.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDACpp:Make">
+        <MSBuild Projects="MDACpp\MDACpp.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MDADelphi"/>
+        <CallTarget Targets="MDADelphi;MDACpp"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MDADelphi:Clean"/>
+        <CallTarget Targets="MDADelphi:Clean;MDACpp:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MDADelphi:Make"/>
+        <CallTarget Targets="MDADelphi:Make;MDACpp:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
